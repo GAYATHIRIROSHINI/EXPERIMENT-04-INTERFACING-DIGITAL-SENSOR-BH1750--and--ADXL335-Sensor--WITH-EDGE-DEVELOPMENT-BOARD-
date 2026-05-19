@@ -234,7 +234,8 @@ while True:
 
 <img width="1912" height="896" alt="image" src="https://github.com/user-attachments/assets/cdb4018f-8f21-4002-8ede-9f38376b7e87" />
 
-<img width="1918" height="921" alt="image" src="https://github.com/user-attachments/assets/55084eb1-d9fb-4743-a1ad-0d263d4950d8" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/75354f6f-c1fd-4e0b-a20f-fa2c8d8d4409" />
+
 
 
 Experiment 4B
@@ -501,24 +502,17 @@ while True:
  
 ````
 
-### OUPUT  
-
-# FIGURE -07
+### OUPUT 
 
 <img width="899" height="1599" alt="image" src="https://github.com/user-attachments/assets/b5fb56d7-8780-4164-a973-5f7b1f4cee17" />
 
+<img width="1600" height="751" alt="image" src="https://github.com/user-attachments/assets/82f7ead3-0414-41a7-8505-a909b3b8ecb4" />
 
-#  FIGURE -08 
+<img width="1600" height="868" alt="image" src="https://github.com/user-attachments/assets/7e49234d-e357-4879-b690-83962d4c2426" />
 
-<img width="595" height="401" alt="Screenshot 2026-05-19 141749" src="https://github.com/user-attachments/assets/c71b2fae-dd17-411b-8fdd-b8fb9de17e23" />
+<img width="1600" height="799" alt="image" src="https://github.com/user-attachments/assets/aa7ea820-773d-4c5c-beab-8e86f9943cc9" />
 
-# FIGURE -09 
 
-<img width="1907" height="1017" alt="Screenshot 2026-05-19 142812" src="https://github.com/user-attachments/assets/bffa1175-2d03-4c4a-bf00-e6626b04db13" />
-
-<img width="1918" height="1061" alt="Screenshot 2026-05-19 142819" src="https://github.com/user-attachments/assets/3d8ff906-6558-42e2-b072-fc3a4a0347d6" />
-
-<img width="1913" height="1002" alt="Screenshot 2026-05-19 143341" src="https://github.com/user-attachments/assets/193e44da-6457-497a-ba77-aa0ca974faca" />
 
 ## **RESULT:**  
 The **Light-Intensity sensor (BH1750) Accelerometer sensor (ADXL335)** was successfully interfaced with the **Raspberry Pi 4**, and real-time **Intensity of Light and acceleration level in ax,ay,az,gx,gy & gz** were read and displayed in Console and Thingzmate Cloud. 
