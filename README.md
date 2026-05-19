@@ -2,10 +2,10 @@
 
 ---
 
-### **NAME:**  
-### **DEPARTMENT:**  
-### **ROLL NO:**  
-### **DATE OF EXPERIMENT:**  
+### **NAME:M GAYATHIRI ROSHINI **  
+### **DEPARTMENT:CSE IOT **  
+### **ROLL NO: 212223110012**  
+### **DATE OF EXPERIMENT:13-05-2026**  
 
 ---
 
@@ -80,7 +80,144 @@ Connect the Accelerometer sensor (ADXL335) Z_OUT to any one GPIO.
 Experiment 4A
 ## PROGRAM (Python)
 ```
+from urllib import request
+import json
+import time
+import smbus2
+import ssl
 
+# =====================================================
+# SSL FIX
+# =====================================================
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+# =====================================================
+# BH1750 SENSOR CONFIGURATION
+# =====================================================
+
+DEVICE = 0x23
+ONE_TIME_HIGH_RES_MODE = 0x20
+
+bus = smbus2.SMBus(1)
+
+# =====================================================
+# THINGZMATE CLOUD CONFIGURATION
+# =====================================================
+
+API_KEY = "303ff8114454d09045d7d668b232ce6d"
+
+URL = "https://iot.saveetha.in:4433/api/v1/device-types/edgecomput/devices/temperature/uplink"
+
+# =====================================================
+# BH1750 READ FUNCTION
+# =====================================================
+
+def read_light():
+
+    data = bus.read_i2c_block_data(
+        DEVICE,
+        ONE_TIME_HIGH_RES_MODE,
+        2
+    )
+
+    lux = (data[0] << 8 | data[1]) / 1.2
+
+    return round(lux, 2)
+
+# =====================================================
+# START MESSAGE
+# =====================================================
+
+print("======================================")
+print("BH1750 + ThingzMate Cloud Started")
+print("======================================")
+
+time.sleep(2)
+
+# =====================================================
+# MAIN LOOP
+# =====================================================
+
+while True:
+
+    try:
+
+        # ==========================================
+        # READ SENSOR
+        # ==========================================
+
+        lux = read_light()
+
+        print("Light Intensity (Lux):", lux)
+
+        # ==========================================
+        # CREATE JSON PAYLOAD
+        # ==========================================
+
+        payload = {
+            "lux": lux
+        }
+
+        data = json.dumps(payload).encode()
+
+        print("Payload:", payload)
+
+        # ==========================================
+        # HTTP REQUEST
+        # ==========================================
+
+        req = request.Request(
+            URL,
+            method="POST"
+        )
+
+        req.add_header(
+            "Content-Type",
+            "application/json"
+        )
+
+        req.add_header(
+            "Authorization",
+            "Bearer " + API_KEY
+        )
+
+        # ==========================================
+        # SEND DATA TO THINGZMATE
+        # ==========================================
+
+        response = request.urlopen(
+            req,
+            data=data,
+            timeout=10
+        )
+
+        # ==========================================
+        # RESPONSE
+        # ==========================================
+
+        print("======================================")
+        print("Cloud Upload Success")
+        print("Server Response:", response.read().decode())
+        print("======================================")
+
+        time.sleep(5)
+
+    except KeyboardInterrupt:
+
+        print("======================================")
+        print("Program Stopped")
+        print("======================================")
+
+        break
+
+    except Exception as e:
+
+        print("======================================")
+        print("Error:", e)
+        print("======================================")
+
+        time.sleep(2)
 
  
 
@@ -90,12 +227,12 @@ Experiment 4A
 ````
 
 ### OUPUT  
+<img width="1600" height="933" alt="WhatsApp Image 2026-05-13 at 11 16 02 AM" src="https://github.com/user-attachments/assets/2fd6d50f-1131-48c6-9ca8-85158c41c58e" />
+<img width="1600" height="933" alt="WhatsApp Image 2026-05-13 at 11 16 02 AM" src="https://github.com/user-attachments/assets/5431b1dd-957a-44dc-96de-2026478bdec1" />
+<img width="1600" height="933" alt="WhatsApp Image 2026-05-13 at 11 16 02 AM" src="https://github.com/user-attachments/assets/92a072fc-5242-4c67-bea3-89fe7ff3eefa" />
+<img width="591" height="1280" alt="image" src="https://github.com/user-attachments/assets/f2d2f953-1bd1-428b-907d-63a58093961a" />
 
-# FIGURE -04 ADD TITILE HERE 
 
-#  FIGURE -05 ADD TITILE HERE 
-
-# FIGURE -06 ADD TITLE HERE 
 
 Experiment 4B
 ## PROGRAM (Python)
